@@ -51,6 +51,17 @@
           <dmn:text/>
         </dmn:annotationEntry>
       </dmn:rule>
+      <dmn:rule id="_A928EB75-F248-4DE2-85C1-DCCBA8ED3596">
+        <dmn:inputEntry id="_FC6CECAE-FE33-45C0-BE4F-49283C38CA26">
+          <dmn:text>&lt;=20</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_851EFDB9-C3DB-4C9E-9784-7F613337B663">
+          <dmn:text>"Invalid"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
   <dmn:decision id="_B29F4038-B1F5-4A81-B867-0D11F99C4B86" name="Valdate Processors">
@@ -146,7 +157,7 @@
     <dmn:informationRequirement id="_E3D8C8D6-46A6-481F-818F-C29D49B8B754">
       <dmn:requiredDecision href="#_DE1FF070-0D6F-4421-A98B-92DDCF5E5E2A"/>
     </dmn:informationRequirement>
-    <dmn:decisionTable id="_051A6193-5430-4357-A20E-3796E31F56EE" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+    <dmn:decisionTable id="_051A6193-5430-4357-A20E-3796E31F56EE" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
       <dmn:input id="_6B9CC337-C975-418B-AAE3-6399A93B471E">
         <dmn:inputExpression id="_05BAB6F9-0063-4052-9148-D7A5DCF89AF8" typeRef="string">
           <dmn:text>Valdate Processors</dmn:text>
@@ -229,6 +240,10 @@
       </dmn:rule>
     </dmn:decisionTable>
   </dmn:decision>
+  <dmn:decision id="_5C69CF9D-C666-4D05-BBC2-658D5D466513" name="Decision-1">
+    <dmn:extensionElements/>
+    <dmn:variable id="_CDD35F67-41ED-4A17-82E8-06D1B1745D71" name="Decision-1"/>
+  </dmn:decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="_4F9E2CE2-617C-476A-94C7-661B8F1B7D3F" name="DRG">
       <di:extension>
@@ -305,6 +320,15 @@
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
         <dc:Bounds x="297" y="12" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_5C69CF9D-C666-4D05-BBC2-658D5D466513" dmnElementRef="_5C69CF9D-C666-4D05-BBC2-658D5D466513" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="653" y="154" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_E2236F1D-ECC5-4C4E-9EF3-11EAE3E9FBA9" dmnElementRef="_E2236F1D-ECC5-4C4E-9EF3-11EAE3E9FBA9">
