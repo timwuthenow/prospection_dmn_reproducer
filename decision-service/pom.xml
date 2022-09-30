@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Master Parent POM -->
+	<parent>
+		<groupId>com.prospection.sample</groupId>
+		<artifactId>prospection-sample</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- Module POM -->
+	<groupId>com.prospection.sample</groupId>
+	<artifactId>decision-service</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<!-- Project Specific Properties -->
+	<properties>
+		<fact-model.version>1.0.0-SNAPSHOT</fact-model.version>
+	</properties>
+
+	<!-- Project Specific Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>kogito-quarkus-rules</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.prospection.sample</groupId>
+			<artifactId>fact-model</artifactId>
+			<version>${fact-model.version}</version>
+		</dependency>
+	</dependencies>
+</project>

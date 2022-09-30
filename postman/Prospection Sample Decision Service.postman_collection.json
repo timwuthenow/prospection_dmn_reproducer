@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "6bb57d9d-9c10-459b-8453-47667bd356ea",
+		"name": "Prospection Sample Decision Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23092969"
+	},
+	"item": [
+		{
+			"name": "Find All Servers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requiredNumberOfProcessors\": 4,\n    \"requiredMemory\": 1024,\n    \"requiredDiskSpace\": 2048,\n    \"servers\": [\n        {\n            \"id\": \"Production ABC\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production DEF\",\n            \"numberOfProcessors\": 8,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production GHI\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 2048,\n            \"diskSpace\": 512\n        },\n        {\n            \"id\": \"Production XYZ\",\n            \"numberOfProcessors\": 4,\n            \"memory\": 2048,\n            \"diskSpace\": 4096\n        }\n    ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/prospection/find-all-servers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prospection",
+						"find-all-servers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Passed Servers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requiredNumberOfProcessors\": 4,\n    \"requiredMemory\": 1024,\n    \"requiredDiskSpace\": 2048,\n    \"servers\": [\n        {\n            \"id\": \"Production ABC\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production DEF\",\n            \"numberOfProcessors\": 8,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production GHI\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 2048,\n            \"diskSpace\": 512\n        },\n        {\n            \"id\": \"Production XYZ\",\n            \"numberOfProcessors\": 4,\n            \"memory\": 2048,\n            \"diskSpace\": 4096\n        }\n    ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/prospection/find-passed-servers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prospection",
+						"find-passed-servers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Failed Servers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requiredNumberOfProcessors\": 4,\n    \"requiredMemory\": 1024,\n    \"requiredDiskSpace\": 2048,\n    \"servers\": [\n        {\n            \"id\": \"Production ABC\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production DEF\",\n            \"numberOfProcessors\": 8,\n            \"memory\": 512,\n            \"diskSpace\": 1024\n        },\n        {\n            \"id\": \"Production GHI\",\n            \"numberOfProcessors\": 2,\n            \"memory\": 2048,\n            \"diskSpace\": 512\n        },\n        {\n            \"id\": \"Production XYZ\",\n            \"numberOfProcessors\": 4,\n            \"memory\": 2048,\n            \"diskSpace\": 4096\n        }\n    ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/prospection/find-failed-servers/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prospection",
+						"find-failed-servers",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

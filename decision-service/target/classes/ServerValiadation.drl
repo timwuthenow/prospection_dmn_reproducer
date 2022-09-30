@@ -1,0 +1,43 @@
+package com.prospection.queries;
+
+// Rule unitl import
+unit ProspectionUnit;
+
+// Fact class imports
+import com.prospection.model.Server;
+
+//--------------------------------------------------------------------------------------
+// Rules
+//--------------------------------------------------------------------------------------
+rule ValidateProcessors when
+    $server: /servers [ numberOfProcessors < requiredNumberOfProcessors ]
+then
+    $server.markAsInvalid("Low number of processors");
+end
+
+rule ValidateMemory when
+    $server: /servers [ memory < requiredMemory ]
+then
+    $server.markAsInvalid("Low memory");
+end
+
+rule ValidateDiskSpace when
+    $server: /servers [ diskSpace < requiredDiskSpace ]
+then
+    $server.markAsInvalid("Low disk space");
+end
+
+//--------------------------------------------------------------------------------------
+// Queries
+//--------------------------------------------------------------------------------------
+query FindAllServers
+    $server: /servers
+end
+
+query FindPassedServers
+    $server: /servers[ validated ]
+end
+
+query FindFailedServers
+    $server: /servers[ !validated ]
+end

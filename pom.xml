@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+		<!-- Enterprise Artifact Repository -->
+		<distributionManagement>
+			<repository>
+				<uniqueVersion>false</uniqueVersion>
+				<id>repo</id>
+				<name>Local Repository</name>
+				<url>file:///Users/tanbt/.m2/repository</url>
+				<layout>default</layout>
+			  </repository>
+		</distributionManagement>
+	<!-- Parent POM -->
+	<parent>
+		<groupId>com.ibm.dba.dm.demos</groupId>
+		<artifactId>kogito-demo-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<!-- Project POM -->
+	<groupId>com.prospection.sample</groupId>
+	<artifactId>prospection-sample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- Project Specific Properties -->
+	<properties>
+	</properties>
+
+	<!-- Project Specific Modules -->
+	<modules>
+		<module>fact-model</module>
+		<module>decision-service</module>
+	</modules>
+</project>

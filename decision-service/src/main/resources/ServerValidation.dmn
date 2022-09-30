@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_7597C2E8-75E0-4BB0-B7B4-48A8256569EE" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_10329ED3-B5F8-48B4-90DB-2A4534DBBE97" name="ServerValidation" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_7597C2E8-75E0-4BB0-B7B4-48A8256569EE">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_0B3903EF-1C5F-41B2-B1E8-D5DF690608B6" name="Server" isCollection="false">
+    <dmn:itemComponent id="_4D6CF287-9774-42D2-B731-8547BB2BBF8E" name="numberOfProcessors" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_24C34447-075A-41A3-A8B0-DBB6E8E1359D" name="memory" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_0697B69A-8DBA-43DC-89E5-30C6954D9908" name="diskSpace" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_9411E84D-F950-43C5-9CDB-7DA04D9F8C75" name="ValidationResult" isCollection="false">
+    <dmn:itemComponent id="_C49657C0-1C59-483B-AAEB-65F56D8DA165" name="reason" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_FC626150-CFD1-4459-8448-3A23317BA20D" name="valid" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_0307B280-0B51-4517-9079-D1FB6EE716B5" name="Server">
+    <dmn:extensionElements/>
+    <dmn:variable id="_20E0FEAD-5031-4B13-939B-129E04040A1A" name="Server" typeRef="Server"/>
+  </dmn:inputData>
+  <dmn:decision id="_DE1FF070-0D6F-4421-A98B-92DDCF5E5E2A" name="Validate Memory">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3D95444A-FBEB-494C-B431-60BA7AACABC2" name="Validate Memory" typeRef="string"/>
+    <dmn:informationRequirement id="_E2236F1D-ECC5-4C4E-9EF3-11EAE3E9FBA9">
+      <dmn:requiredInput href="#_0307B280-0B51-4517-9079-D1FB6EE716B5"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_E1F93860-A066-4765-ABF7-21512CBF46CD" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_0B8B9447-4B0B-4269-B8F3-356055D03EFB">
+        <dmn:inputExpression id="_DE419582-02B5-4DFE-8CCE-EB10665D9B91" typeRef="number">
+          <dmn:text>Server.memory</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_F90B72F6-E8C7-41E8-9D0F-4B5E24C8867F"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_CD7FA9CB-27EE-4E41-A5D2-E86C70B57EB5">
+        <dmn:inputEntry id="_DE4F6903-C8DF-426B-AF6D-90223C51AC35">
+          <dmn:text>&gt;20
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F276E45B-169F-4240-81E1-43270231975B">
+          <dmn:text>"Valid"
+</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_B29F4038-B1F5-4A81-B867-0D11F99C4B86" name="Valdate Processors">
+    <dmn:extensionElements/>
+    <dmn:variable id="_092179F3-A8A2-42FF-991F-8DF7677091B8" name="Valdate Processors" typeRef="string"/>
+    <dmn:informationRequirement id="_CBE9FAD9-2F28-4709-8757-5BAE16176CB5">
+      <dmn:requiredInput href="#_0307B280-0B51-4517-9079-D1FB6EE716B5"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_BB8CCF65-3953-457A-BDFD-8AB4B07115DD" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_88D926E2-AD8F-4426-841A-8B7CC72144F0">
+        <dmn:inputExpression id="_1E1DB223-CD2B-49D2-9E19-D34B2A42F175" typeRef="number">
+          <dmn:text>Server.numberOfProcessors</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_8DB0668D-F9A2-4E95-BEF4-4BDF5EC7E6E6"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_07B81C14-079E-4827-9D78-942D7788C3CF">
+        <dmn:inputEntry id="_F69E92E9-8A42-46E3-A2D0-F55043229005">
+          <dmn:text>&gt; 10
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A2A9D5BC-6C6D-4FB0-AF66-C9D9465671A2">
+          <dmn:text>"Valid"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_17E0E818-A08D-46B6-98ED-F55666A746F6">
+        <dmn:inputEntry id="_B4F97F51-842C-4718-A9B9-FDE52063C8EE">
+          <dmn:text>&lt;=10
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_16F6DE5C-13D2-4730-B538-179795D09EAF">
+          <dmn:text>"Invalid"
+</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_EB103894-0784-4622-A354-76D04B81C1E8" name="Validate DIskspace">
+    <dmn:extensionElements/>
+    <dmn:variable id="_1D85F935-4EFB-4752-A98D-7A11A54D811A" name="Validate DIskspace" typeRef="string"/>
+    <dmn:informationRequirement id="_4AE98D1A-F730-4605-BEA5-21494102D1A8">
+      <dmn:requiredInput href="#_0307B280-0B51-4517-9079-D1FB6EE716B5"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_ACEC8DE1-E5BE-4376-832F-F2B2780B7185" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_2624653B-1A3A-4447-BD98-46D64F10080C">
+        <dmn:inputExpression id="_402F6804-2161-435B-A36B-181D63235198" typeRef="number">
+          <dmn:text>Server.diskSpace</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_EB870193-FD97-41B2-BACF-7390B88E40FE"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_9F9FBE97-46C3-483E-B088-22D86A37062C">
+        <dmn:inputEntry id="_F7623FBE-4A4C-4AF2-9EAA-96AA2E2F9AAA">
+          <dmn:text>&gt;10
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B7E74086-B92D-46C8-8B8D-55D199B8AB9C">
+          <dmn:text>"Valid"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_C2C1F221-3E4E-481C-8716-95C400277CF3">
+        <dmn:inputEntry id="_AD3203FF-D99F-49BD-9D54-902E54B15ABB">
+          <dmn:text>&lt;=10
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D38D57CA-16F9-4752-BFFF-297C4AB075A4">
+          <dmn:text>"Invalid"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:decision id="_14D27EA0-BC84-4E42-BFDB-F4CB42ADB228" name="Validatiaion Result">
+    <dmn:extensionElements/>
+    <dmn:variable id="_26E0DF87-082F-45AD-94FE-D38A913D0C1A" name="Validatiaion Result" typeRef="ValidationResult"/>
+    <dmn:informationRequirement id="_3DF91B85-5AA8-4EA8-892E-E4ACE0ED47D8">
+      <dmn:requiredDecision href="#_B29F4038-B1F5-4A81-B867-0D11F99C4B86"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_07A8D9F5-7D51-4621-8EA7-60A21BB95F28">
+      <dmn:requiredDecision href="#_EB103894-0784-4622-A354-76D04B81C1E8"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_E3D8C8D6-46A6-481F-818F-C29D49B8B754">
+      <dmn:requiredDecision href="#_DE1FF070-0D6F-4421-A98B-92DDCF5E5E2A"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_051A6193-5430-4357-A20E-3796E31F56EE" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_6B9CC337-C975-418B-AAE3-6399A93B471E">
+        <dmn:inputExpression id="_05BAB6F9-0063-4052-9148-D7A5DCF89AF8" typeRef="string">
+          <dmn:text>Valdate Processors</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_9086E7B6-D405-48D2-AC43-42CB4B4377A7">
+        <dmn:inputExpression id="_98632886-54D0-475A-B598-31C9BFE152BB" typeRef="string">
+          <dmn:text>Validate DIskspace</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_F14AC91D-4FE4-4643-97A7-EE483921D0E6">
+        <dmn:inputExpression id="_E4A5943A-2041-4CF7-97EC-42955944D3E7" typeRef="string">
+          <dmn:text>Validate Memory</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_52E0890D-E499-42BD-AF06-2192ECA064D9" name="reason" typeRef="string"/>
+      <dmn:output id="_BB95C732-6E87-438B-B631-416740528388" name="valid" typeRef="boolean"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_6EB820D8-E192-4F18-83DA-E00DDF94E1DA">
+        <dmn:inputEntry id="_8439E6F5-80DA-4F4C-A27C-44E8B7C8B8EA">
+          <dmn:text>"Invalid"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4D3D3400-D056-4B68-B87F-F279C1BE90CA">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CE4BA89A-2C1A-4402-ADED-7F590F45E74C">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8BD5D6EE-55ED-4033-97DC-6C669760585B">
+          <dmn:text>"Processors invalid"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BA07248C-944A-489F-BF91-B480227F1D33">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_4E2470D5-04E5-43E9-9AC0-30663FB394A0">
+        <dmn:inputEntry id="_B9D8BECB-CEFD-4D57-B00B-B0F782F3FB4A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FD794BFD-87E9-4ADE-9856-1F9B6EE00546">
+          <dmn:text>"Invalid"
+</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B7C397B7-3BC9-4651-AB4B-03733F3DBE45">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C45C4AC2-A216-4320-82E6-533EAFEFEA5D">
+          <dmn:text>"Diskspace"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_BC54A68D-0A25-4C4B-B2FF-CBFB5E8FF4AD">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_B86567F3-B5D7-4FAA-AAB3-749764314A5A">
+        <dmn:inputEntry id="_BD76C654-59BF-42BB-BF92-3DAE5336CEAD">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0084E701-838C-4B0C-ABDF-5E48E6179267">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_05DACD0C-8976-491D-9ACB-798ECCFF76A5">
+          <dmn:text>"Invalid"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_44990CD0-D1DF-4FFD-8F3B-F2A2035124A2">
+          <dmn:text>"Memory"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:outputEntry id="_1A84EC92-E115-443E-9BA2-0978CED78617">
+          <dmn:text>false
+</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_4F9E2CE2-617C-476A-94C7-661B8F1B7D3F" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_E1F93860-A066-4765-ABF7-21512CBF46CD">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_BB8CCF65-3953-457A-BDFD-8AB4B07115DD">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_ACEC8DE1-E5BE-4376-832F-F2B2780B7185">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_051A6193-5430-4357-A20E-3796E31F56EE">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_0307B280-0B51-4517-9079-D1FB6EE716B5" dmnElementRef="_0307B280-0B51-4517-9079-D1FB6EE716B5" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="294.29906542056074" y="278" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_DE1FF070-0D6F-4421-A98B-92DDCF5E5E2A" dmnElementRef="_DE1FF070-0D6F-4421-A98B-92DDCF5E5E2A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="127" y="145" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_B29F4038-B1F5-4A81-B867-0D11F99C4B86" dmnElementRef="_B29F4038-B1F5-4A81-B867-0D11F99C4B86" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="297" y="145" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_EB103894-0784-4622-A354-76D04B81C1E8" dmnElementRef="_EB103894-0784-4622-A354-76D04B81C1E8" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="463" y="145" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_14D27EA0-BC84-4E42-BFDB-F4CB42ADB228" dmnElementRef="_14D27EA0-BC84-4E42-BFDB-F4CB42ADB228" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="297" y="12" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_E2236F1D-ECC5-4C4E-9EF3-11EAE3E9FBA9" dmnElementRef="_E2236F1D-ECC5-4C4E-9EF3-11EAE3E9FBA9">
+        <di:waypoint x="344.29906542056074" y="303"/>
+        <di:waypoint x="177" y="195"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_CBE9FAD9-2F28-4709-8757-5BAE16176CB5" dmnElementRef="_CBE9FAD9-2F28-4709-8757-5BAE16176CB5">
+        <di:waypoint x="344.29906542056074" y="303"/>
+        <di:waypoint x="347" y="195"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_4AE98D1A-F730-4605-BEA5-21494102D1A8" dmnElementRef="_4AE98D1A-F730-4605-BEA5-21494102D1A8">
+        <di:waypoint x="344.29906542056074" y="303"/>
+        <di:waypoint x="513" y="195"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_3DF91B85-5AA8-4EA8-892E-E4ACE0ED47D8" dmnElementRef="_3DF91B85-5AA8-4EA8-892E-E4ACE0ED47D8">
+        <di:waypoint x="347" y="170"/>
+        <di:waypoint x="347" y="62"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_07A8D9F5-7D51-4621-8EA7-60A21BB95F28" dmnElementRef="_07A8D9F5-7D51-4621-8EA7-60A21BB95F28">
+        <di:waypoint x="513" y="170"/>
+        <di:waypoint x="347" y="62"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_E3D8C8D6-46A6-481F-818F-C29D49B8B754" dmnElementRef="_E3D8C8D6-46A6-481F-818F-C29D49B8B754">
+        <di:waypoint x="177" y="170"/>
+        <di:waypoint x="347" y="62"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
